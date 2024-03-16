@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import Models.Aluguel;
 import Models.Livro;
 import Models.Usuario;
+import Service.Servicos;
 
 public class App {
 
@@ -15,6 +16,8 @@ public class App {
 	    ArrayList<Livro> livros = new ArrayList<>();
         ArrayList<Usuario> usuarios = new ArrayList<>();
         ArrayList<Aluguel> alugueis = new ArrayList<>();
+        
+        Servicos servico = new Servicos();
 
 	        int opcao;
 	        do {
@@ -22,22 +25,27 @@ public class App {
 
 	            switch (opcao) {
 	                case 1:
-	                 //   cadastrarLivro(livros);
+	                 servico.cadastrarLivro(livros);
 	                    break;
 	                case 2:
-	                	 //   cadastrarUsuario(usuarios);
+	                	servico.cadastrarUsuario(usuarios);
+	                	 
 	                    break;
 	                case 3:
-	                	 //   listarLivros(livros);
+	                	servico.listarLivros(livros);
+	                	 
 	                    break;
 	                case 4:
-	                	 //   listarUsuarios(usuarios);
+	                	servico.listarUsuarios(usuarios);
+	                	 
 	                    break;
 	                case 5:
-	                	 //   realizarAluguel(livros, usuarios, alugueis);
+	                	servico.realizarAluguel(livros, usuarios, alugueis);
+	                	
 	                    break;
 	                case 6:
-	                	 //   devolverLivro(alugueis);
+	                	servico.devolverLivro(alugueis, usuarios, livros);
+	                	 
 	                    break;
 	                case 0:
 	                    JOptionPane.showMessageDialog(null, "Saindo do sistema. Até logo!");

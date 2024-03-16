@@ -1,27 +1,31 @@
 package Models;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 public class Aluguel {
 	
     private Usuario usuario;
     private Livro livro;
-    private Date dataAluguel;
-    private Date dataDevolucao;
+    private LocalDate dataAluguel;
+    private LocalDate dataDevolucao;
     
     
 	public Aluguel() {
 		
 	}
+	
+	
 
 
-	public Aluguel(Usuario usuario, Livro livro, Date dataAluguel, Date dataDevolucao) {
+	public Aluguel(Usuario usuario, Livro livro, LocalDate localDate) {
 		super();
 		this.usuario = usuario;
 		this.livro = livro;
-		this.dataAluguel = dataAluguel;
-		this.dataDevolucao = dataDevolucao;
+		this.dataAluguel = localDate;
 	}
+
+
 
 
 	public Usuario getUsuario() {
@@ -34,12 +38,12 @@ public class Aluguel {
 	}
 
 
-	public Date getDataAluguel() {
+	public LocalDate getDataAluguel() {
 		return dataAluguel;
 	}
 
 
-	public Date getDataDevolucao() {
+	public LocalDate getDataDevolucao() {
 		return dataDevolucao;
 	}
 
@@ -54,12 +58,12 @@ public class Aluguel {
 	}
 
 
-	public void setDataAluguel(Date dataAluguel) {
+	public void setDataAluguel(LocalDate dataAluguel) {
 		this.dataAluguel = dataAluguel;
 	}
 
 
-	public void setDataDevolucao(Date dataDevolucao) {
+	public void setDataDevolucao(LocalDate dataDevolucao) {
 		this.dataDevolucao = dataDevolucao;
 	}
     

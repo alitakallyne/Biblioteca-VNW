@@ -18,7 +18,7 @@ public class Livro {
 		this.nomeLivro = nomeLivro;
 		this.nomeAutor = nomeAutor;
 		this.dataPublicacao = LocalDate.now();
-		this.isAlugado = isAlugado;
+		this.isAlugado = false;
 	}
 	
 	public String getNomeLivro() {
@@ -32,6 +32,16 @@ public class Livro {
 	}
 	public void setNomeAutor(String nomeAutor) {
 		this.nomeAutor = nomeAutor;
+	}
+	
+	
+
+	public LocalDate getDataPublicacao() {
+		return dataPublicacao;
+	}
+
+	public void setDataPublicacao(LocalDate dataPublicacao) {
+		this.dataPublicacao = dataPublicacao;
 	}
 
 	public boolean isAlugado() {
