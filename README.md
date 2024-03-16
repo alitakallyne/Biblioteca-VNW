@@ -33,8 +33,6 @@ O projeto deve atender aos seguintes requisitos:
 ## Tecnologias Utilizadas
 
 - Linguagem de Programação: [Java](https://www.java.com/)
-- Framework Web (opcional): [Spring Boot](https://spring.io/projects/spring-boot)
-- Banco de Dados: [MySQL](https://www.mysql.com/)
 
 ## Como Executar 🚀 
 
