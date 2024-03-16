@@ -23,6 +23,7 @@ public class Aluguel {
 		this.usuario = usuario;
 		this.livro = livro;
 		this.dataAluguel = localDate;
+		this.dataDevolucao =  dataAluguel.plusDays(7);
 	}
 
 

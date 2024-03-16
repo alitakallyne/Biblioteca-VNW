@@ -45,6 +45,8 @@ public class App {
 	                    break;
 	                case 6:
 	                	servico.devolverLivro(alugueis, usuarios, livros);
+	                case 7:
+	                	servico.renovarAluguel(livros, usuarios, alugueis);
 	                	 
 	                    break;
 	                case 0:
@@ -66,6 +68,7 @@ public class App {
                 "4. Listar Usuários\n" +
                 "5. Realizar Aluguel\n" +
                 "6. Devolver Livro\n" +
+                "7. Renovar Livro\n" +
                 "0. Sair";
 
         String input = JOptionPane.showInputDialog(null, menu + "\nEscolha uma opção:");

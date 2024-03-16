@@ -95,6 +95,8 @@ public class Servicos {
     }
 
     public  void realizarAluguel(ArrayList<Livro> livros, ArrayList<Usuario> usuarios, ArrayList<Aluguel> alugueis) {
+    	checagemDataLivros(livros, usuarios, alugueis);
+    	
     	if(usuarioLogado == null) {
     		autenticarUsuario(usuarios);
     		return;
@@ -208,6 +210,85 @@ public class Servicos {
     	    JOptionPane.showMessageDialog(null, "Livro devolvido com sucesso!");
     	
     	
+    }
+    
+    public void renovarAluguel (ArrayList<Livro> livros, ArrayList<Usuario> usuarios, ArrayList<Aluguel> alugueis) {
+    	
+    	checagemDataLivros(livros, usuarios, alugueis);
+    	
+    	if(usuarioLogado == null) {
+    		autenticarUsuario(usuarios);
+    		return;
+    	}
+    	
+    	if(alugueis.isEmpty()) {
+    		JOptionPane.showMessageDialog(null, "Nenhum livro alugado no momento.");
+            return;
+    	}
+    	
+ 
+        StringBuilder alugueisUsuario = new StringBuilder("Aluguéis realizados pelo usuário:\n");
+        for (Aluguel aluguel : alugueis) {
+            if (aluguel.getUsuario().equals(usuarioLogado)) {
+                alugueisUsuario.append("- Livro: ").append(aluguel.getLivro().getNomeLivro()).append(", Data de Devolução: ").append(aluguel.getDataDevolucao()).append("\n");
+            }
+        }
+        if (alugueisUsuario.length() == 0) {
+            JOptionPane.showMessageDialog(null, "Você não tem nenhum aluguel realizado.");
+            return;
+        }
+    	
+        
+        String livroRenovacao = JOptionPane.showInputDialog(alugueisUsuario.toString(), "Selecione o livro para renovar o aluguel:");
+    
+    
+        Aluguel aluguelRenovacao = null;
+        for (Aluguel aluguel : alugueis) {
+            if (aluguel.getUsuario().equals(usuarioLogado) && aluguel.getLivro().getNomeLivro().equalsIgnoreCase(livroRenovacao)) {
+                aluguelRenovacao = aluguel;
+                break;
+            }
+        }
+        if (aluguelRenovacao == null) {
+            JOptionPane.showMessageDialog(null, "Livro selecionado não está alugado por você.");
+        }
+    
+    
+        aluguelRenovacao.setDataDevolucao(LocalDate.now().plusDays(7));
+
+        JOptionPane.showMessageDialog(null, "Aluguel renovado com sucesso!\nNova data de devolução prevista: " + aluguelRenovacao.getDataDevolucao());
+    }
+    
+    
+    public void checagemDataLivros (ArrayList<Livro> livros, ArrayList<Usuario> usuarios, ArrayList<Aluguel> alugueis) {
+    	
+
+    	if(usuarioLogado == null) {
+    		autenticarUsuario(usuarios);
+    		return;
+    	}
+    	
+    	if(alugueis.isEmpty()) {
+    		JOptionPane.showMessageDialog(null, "Nenhum livro alugado no momento.");
+            return;
+    	}
+    	
+       StringBuilder alugueisUsuario = new StringBuilder("Aluguéis realizados pelo usuário:\n");
+    	
+       LocalDate hoje = LocalDate.now();
+ 
+       for (Aluguel aluguel : alugueis) {
+           if (aluguel.getUsuario().equals(usuarioLogado)) {
+               alugueisUsuario.append("- Livro: ").append(aluguel.getLivro().getNomeLivro())
+                   .append(", Data de Devolução: ").append(aluguel.getDataDevolucao()).append("\n");
+
+               if (aluguel.getDataDevolucao().isBefore(hoje)) {
+                   alugueisUsuario.append("   ** Livro com a devolução atrasada **\n");
+               }
+           }
+       }
+
+       JOptionPane.showMessageDialog(null, alugueisUsuario.toString());
     }
 
 }
